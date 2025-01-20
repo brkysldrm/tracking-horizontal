@@ -10,7 +10,7 @@
       padding: 0;
       overflow: hidden;
       height: 100vh;
-      background-color: #f0f0f0;
+      background-color: white;
     }
 
     .dot {
@@ -36,7 +36,6 @@
       }
     }
 
-    /* Buton stili */
     .controls {
       position: absolute;
       top: 10px;
@@ -48,7 +47,7 @@
 
     .button {
       padding: 10px 20px;
-      background-color: #007bff;
+      background-color: #1d2c65;
       color: white;
       border: none;
       cursor: pointer;
@@ -57,7 +56,39 @@
     }
 
     .button:hover {
-      background-color: #0056b3;
+      background-color: #142043;
+    }
+
+    .footer-link {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      text-decoration: none;
+      display: flex;
+      gap: 2px;
+      opacity: 0.7; /* Yazıyı şeffaf yapar */
+    }
+
+    .footer-link span {
+      font-weight: bold;
+    }
+
+    .footer-link .o {
+      color: rgba(255, 0, 0, 0.7); /* Şeffaf kırmızı */
+    }
+
+    .footer-link .x {
+      color: rgba(0, 0, 255, 0.7); /* Şeffaf mavi */
+    }
+
+    .footer-link .other {
+      color: #1d2c65; /* Varsayılan mavi ton */
+    }
+
+    .footer-link:hover {
+      opacity: 1; /* Hover durumunda tam görünebilir */
     }
   </style>
 </head>
@@ -67,26 +98,30 @@
     <button class="button" id="slowDown">Hızı Azalt</button>
     <button class="button" id="speedUp">Hızı Arttır</button>
   </div>
-
+  <a href="https://odyoflix.com" class="footer-link" target="_blank">
+    <span class="o">o</span>
+    <span class="other">dyofli</span>
+    <span class="x">x</span>
+  </a>
   <script>
     const dot = document.querySelector('.dot');
     const slowDownButton = document.getElementById('slowDown');
     const speedUpButton = document.getElementById('speedUp');
-    let currentDuration = 6; // Başlangıçta 6 saniye
+    let currentDuration = 6;
 
     function updateAnimationDuration() {
       dot.style.animationDuration = `${currentDuration}s`;
     }
 
     slowDownButton.addEventListener('click', () => {
-      if (currentDuration < 10) { // Maksimum 10 saniyeye kadar azaltma
+      if (currentDuration < 10) {
         currentDuration += 1;
         updateAnimationDuration();
       }
     });
 
     speedUpButton.addEventListener('click', () => {
-      if (currentDuration > 2) { // Minimum 2 saniyeye kadar artırma
+      if (currentDuration > 2) {
         currentDuration -= 1;
         updateAnimationDuration();
       }
