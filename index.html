@@ -96,7 +96,7 @@
   <div class="dot"></div>
   <div class="controls">
     <button class="button" id="slowDown">Hızı Azalt</button>
-    <button class="button" id="speedUp">Hızı Arttır</button>
+    <button class="button" id="toggleFullscreen">Tam Ekran Yap</button>
   </div>
   <a href="https://odyoflix.com" class="footer-link" target="_blank">
     <span class="o">o</span>
@@ -106,13 +106,16 @@
   <script>
     const dot = document.querySelector('.dot');
     const slowDownButton = document.getElementById('slowDown');
+    const toggleFullscreenButton = document.getElementById('toggleFullscreen');
     const speedUpButton = document.getElementById('speedUp');
     let currentDuration = 6;
 
+    // Animasyon süresini güncelle
     function updateAnimationDuration() {
       dot.style.animationDuration = `${currentDuration}s`;
     }
 
+    // Hızı azalt
     slowDownButton.addEventListener('click', () => {
       if (currentDuration < 10) {
         currentDuration += 1;
@@ -120,10 +123,22 @@
       }
     });
 
-    speedUpButton.addEventListener('click', () => {
+    // Hızı artır
+    speedUpButton?.addEventListener('click', () => {
       if (currentDuration > 2) {
         currentDuration -= 1;
         updateAnimationDuration();
+      }
+    });
+
+    // Tam ekran kontrolü
+    toggleFullscreenButton.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        toggleFullscreenButton.textContent = "Tam Ekrandan Çık";
+      } else {
+        document.exitFullscreen();
+        toggleFullscreenButton.textContent = "Tam Ekran Yap";
       }
     });
   </script>
