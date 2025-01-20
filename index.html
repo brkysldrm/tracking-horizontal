@@ -68,7 +68,7 @@
       text-decoration: none;
       display: flex;
       gap: 2px;
-      opacity: 0.7;
+      opacity: 0.7; /* Yazıyı şeffaf yapar */
     }
 
     .footer-link span {
@@ -76,19 +76,19 @@
     }
 
     .footer-link .o {
-      color: rgba(255, 0, 0, 0.7);
+      color: rgba(255, 0, 0, 0.7); /* Şeffaf kırmızı */
     }
 
     .footer-link .x {
-      color: rgba(0, 0, 255, 0.7);
+      color: rgba(0, 0, 255, 0.7); /* Şeffaf mavi */
     }
 
     .footer-link .other {
-      color: #1d2c65;
+      color: #1d2c65; /* Varsayılan mavi ton */
     }
 
     .footer-link:hover {
-      opacity: 1;
+      opacity: 1; /* Hover durumunda tam görünebilir */
     }
   </style>
 </head>
@@ -96,7 +96,7 @@
   <div class="dot"></div>
   <div class="controls">
     <button class="button" id="slowDown">Hızı Azalt</button>
-    <button class="button" id="toggleFullscreen">Tam Ekran Yap</button>
+    <button class="button" id="speedUp">Hızı Arttır</button>
   </div>
   <a href="https://odyoflix.com" class="footer-link" target="_blank">
     <span class="o">o</span>
@@ -106,16 +106,13 @@
   <script>
     const dot = document.querySelector('.dot');
     const slowDownButton = document.getElementById('slowDown');
-    const toggleFullscreenButton = document.getElementById('toggleFullscreen');
     const speedUpButton = document.getElementById('speedUp');
     let currentDuration = 6;
 
-    // Animasyon süresini güncelle
     function updateAnimationDuration() {
       dot.style.animationDuration = `${currentDuration}s`;
     }
 
-    // Hızı azalt
     slowDownButton.addEventListener('click', () => {
       if (currentDuration < 10) {
         currentDuration += 1;
@@ -123,22 +120,10 @@
       }
     });
 
-    // Hızı artır
-    speedUpButton?.addEventListener('click', () => {
+    speedUpButton.addEventListener('click', () => {
       if (currentDuration > 2) {
         currentDuration -= 1;
         updateAnimationDuration();
-      }
-    });
-
-    // Tam ekran kontrolü
-    toggleFullscreenButton.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-        toggleFullscreenButton.textContent = "Tam Ekrandan Çık";
-      } else {
-        document.exitFullscreen();
-        toggleFullscreenButton.textContent = "Tam Ekran Yap";
       }
     });
   </script>
